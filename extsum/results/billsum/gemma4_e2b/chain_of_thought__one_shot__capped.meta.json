@@ -1,0 +1,7 @@
+{
+  "variant": "chain_of_thought__one_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.08809535604086705,
+  "n_docs": 100,
+  "cap_k": 6
+}

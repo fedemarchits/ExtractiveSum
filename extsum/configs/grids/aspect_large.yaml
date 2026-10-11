@@ -1,0 +1,29 @@
+# PARTIAL RUN (2026-07): the 5 best ACLSum techniques by mean test-F1, for the
+# two endpoint-only large models (qwen35_27b, gemma4_31b). 18 variants.
+# The full grid is aspect_full.yaml.
+#
+# NOTE: the grid resolver defaults ABSENT techniques to "all", so dropped techniques
+# must be explicitly zeroed ([]) here, not just omitted.
+
+techniques:
+  # --- ACTIVE: 5 best by mean test-F1 ---
+  self_ask: all
+  salience_inference: all
+  self_critique: all          # zero_shot = critique; one_shot = self_refinement
+  contrastive_joint: all      # zero_shot = contrastive; one_shot = joint_self_ask
+  negative_aware:             # one-shot only by nature
+    - {shot: one_shot, cap: uncapped}
+    - {shot: one_shot, cap: capped}
+
+  # --- DISABLED for the partial run (zeroed so absent-default can't re-enable) ---
+  vanilla: []
+  least_to_most: []
+  tool_augmented: []
+  simulated_tool_augmented: []
+  scoring_based: []
+  chain_of_thought: []
+  explanation_based: []
+  self_ask_trace: []
+  salience_inference_trace: []
+  scoring_based_trace: []
+  chain_of_thought_trace: []

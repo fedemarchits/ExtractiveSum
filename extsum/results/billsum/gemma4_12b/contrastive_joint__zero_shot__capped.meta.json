@@ -1,0 +1,7 @@
+{
+  "variant": "contrastive_joint__zero_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.5076506125193555,
+  "n_docs": 100,
+  "cap_k": 6
+}

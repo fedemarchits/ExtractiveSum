@@ -1,0 +1,7 @@
+{
+  "variant": "explanation_based__one_shot__capped",
+  "mean_latency_s": 0.031930533979902975,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

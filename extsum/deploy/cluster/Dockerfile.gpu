@@ -1,0 +1,31 @@
+# Cluster image (RTX 3090, CUDA 12.x driver): torch 2.5.1 + CUDA 12.1 + Python 3.11.
+# Build from the project root:  docker build -f deploy/cluster/Dockerfile.gpu -t extsum-gpu .
+#
+# vLLM is PINNED to the release built for this torch/CUDA. Do not unpin: newer
+# vLLM pulls a CUDA-13 torch that does not run on the cluster driver. That old
+# vLLM predates gemma-4 / qwen-3.5, which is why the `cluster` profile runs the
+# models on Transformers and uses vLLM only for the 4-bit gemma4_12b.
+FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends git curl wget \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/extsum
+COPY pyproject.toml README.md ./
+COPY src ./src
+# torch is already in the base image; install everything else.
+RUN pip install --no-cache-dir packaging ninja wheel setuptools \
+    && pip install --no-cache-dir transformers accelerate bitsandbytes openai "vllm==0.6.6.post1" \
+    && pip install --no-cache-dir --no-deps . \
+    && pip install --no-cache-dir pyyaml numpy pandas pyarrow datasets rouge-score "nltk>=3.9" \
+       scikit-learn scipy matplotlib
+RUN python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('punkt_tab', quiet=True)"
+
+# The project (configs, data, results) is bind-mounted here at run time.
+WORKDIR /workspace
+ENV EXTSUM_ROOT=/workspace EXTSUM_PROFILE=cluster PYTHONPATH=/workspace/src

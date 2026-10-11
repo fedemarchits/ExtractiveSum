@@ -1,0 +1,7 @@
+{
+  "variant": "negative_aware__one_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 3.636671020470012,
+  "n_docs": 100,
+  "cap_k": 6
+}

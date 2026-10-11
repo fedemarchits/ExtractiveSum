@@ -1,0 +1,7 @@
+{
+  "variant": "self_critique__one_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.09455412175040692,
+  "n_docs": 100,
+  "cap_k": 6
+}

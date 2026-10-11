@@ -1,0 +1,7 @@
+{
+  "variant": "scoring_no_redundancy__zero_shot__uncapped",
+  "mean_latency_s": 0.16398939427977893,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

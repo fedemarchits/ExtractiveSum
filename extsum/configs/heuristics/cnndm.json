@@ -1,0 +1,22 @@
+{
+  "best_heuristic": "local_score",
+  "best_k": 3,
+  "extract_metric": "rouge1",
+  "mode": "singular",
+  "k_selection": {
+    "method": "compression_ratio",
+    "dataset": "cnndm",
+    "split": "validation",
+    "max_docs": null,
+    "seed": null,
+    "n_docs": 13368,
+    "compression_ratio_mean": 0.1049,
+    "compression_ratio_median": 0.0922,
+    "sentences_per_doc_mean": 32.79,
+    "sentences_per_doc_median": 28.0,
+    "k_per_doc_mean": 2.798,
+    "k_per_doc_median": 2.553,
+    "k_per_doc_p25": 1.964,
+    "k_per_doc_p75": 3.368
+  }
+}

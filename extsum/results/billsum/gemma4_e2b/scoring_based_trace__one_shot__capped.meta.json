@@ -1,0 +1,7 @@
+{
+  "variant": "scoring_based_trace__one_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.09629080399987287,
+  "n_docs": 100,
+  "cap_k": 6
+}

@@ -1,0 +1,36 @@
+# PARTIAL RUN: the 5 best BillSum techniques by mean F1 over the six local
+# models (results/billsum/summary.csv, _trace collapsed to its base
+# technique), for the two endpoint-only large models (qwen35_27b, gemma4_31b).
+# Cells match document_full.yaml, so every variant has a local-model counterpart.
+#
+# NOTE: the grid resolver defaults ABSENT techniques to "all", so dropped
+# techniques must be explicitly zeroed ([]) here, not just omitted.
+
+techniques:
+  # --- ACTIVE: 5 best by mean F1 on BillSum ---
+  tool_no_roleplay:
+    - {shot: zero_shot, cap: capped}
+  tool_augmented:
+    - {shot: zero_shot, cap: capped}
+  least_to_most: all
+  explanation_based: all
+  negative_aware:             # one-shot only by nature
+    - {shot: one_shot, cap: uncapped}
+    - {shot: one_shot, cap: capped}
+
+  # --- DISABLED for the partial run ---
+  vanilla: []
+  simulated_tool_augmented: []
+  self_ask: []
+  chain_of_thought: []
+  salience_inference: []
+  self_critique: []
+  contrastive_joint: []
+  tool_no_meta: []
+  scoring_based: []
+  scoring_no_length: []
+  scoring_no_redundancy: []
+  chain_of_thought_trace: []
+  self_ask_trace: []
+  scoring_based_trace: []
+  salience_inference_trace: []

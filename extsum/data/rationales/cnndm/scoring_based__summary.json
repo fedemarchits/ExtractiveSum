@@ -1,0 +1,31 @@
+{
+  "technique": "scoring_based",
+  "aspect": "summary",
+  "source_model": "qwen35_397b",
+  "exemplar_sentences": [
+    "Boxing fans worldwide have picked an emerald green, diamond-encrusted belt to be strapped around the waist of either Floyd Mayweather or Manny Pacquiao at the conclusion of their $300million fight of the century in Las Vegas on May 2.",
+    "The WBC held a public vote to choose between an onyx belt of unusual design or their more traditional green world champion belt, with the latter winning by a margin of just six per cent.",
+    "The cost of the belt is likely to be upwards of $1m.",
+    "Fans chose this emerald belt as the one which will adorn the winner of the fight of the century on May 2 .",
+    "Floyd Mayweather or Manny Pacquiao will end up wearing the $1million emerald belt at the end of their fight - this image does not show the version that includes pictures of the two fighters .",
+    "Costing upwards of $1million, this WBC world champions belt features images of former WBC president Mauricio Sulaiman, Mayweather, Pacquiao and legendary heavyweight Muhammad Ali along the strap.",
+    "The treasured memento comes as a bonus to the winner of a fight for which Mayweather is expected to receive $180m and Pacquiao $120m.",
+    "In a statement the WBC said: 'This exquisite masterpiece is especially designed by the World Boxing Council, for a unique bout that is already gracing the pages of boxing history.",
+    "'In order to appropriately recognise the winner of this titanic and epic event on May 2, emeralds have triumphed.",
+    "'The World Boxing Council is very grateful to the multitude of fans that participated in this process, voting on our web page, to choose the historic belt Mayweather or Pacquiao will proudly possess.'",
+    "Mayweather and Pacquiao go head-to-head at the MGM Grand in their Las Vegas super-fight on May 2 .",
+    "VIDEO Mayweather and Pacquiao camps exchange verbal blows ."
+  ],
+  "shown_indices": [
+    1,
+    2,
+    6
+  ],
+  "gold_indices": [
+    1,
+    2,
+    10
+  ],
+  "f1": 0.6666666666666666,
+  "rationale": "Sentence 1 is essential as it introduces the main event, the specific object (emerald belt), the contenders, and the date. Sentence 2 provides critical context regarding the selection process (WBC public vote) and the alternative option. Sentence 3 adds significant detail regarding the belt's high value ($1m+). Sentence 4 is redundant, repeating the fan choice mentioned in Sentence 2. Sentence 5 repeats the winner/belt connection from Sentence 1 with minor visual caveats. Sentence 6 offers useful specific details about the belt's design (images of figures) which complements Sentence 3's cost mention, but Sentence 3 is more fundamental; however, Sentence 6 is arguably more informative than 3 alone. Let's re-evaluate: S1 (Who/What/When), S2 (How chosen), S6 (Specific design details + cost confirmation). S3 is just cost, S6 is cost + design. S7 mentions fighter payouts which is secondary context. S8-10 are quotes elaborating on S2. S11 repeats the date/location from S1. S12 is a sidebar about video/trash talk. The most comprehensive set covering the core news (Event, Selection, Object Details) is 1, 2, and 6. Wait, the prompt asks for scores 1-5 and classification. The top sentences are 1 (Core News), 2 (Context/Process), and 6 (Specific Details/Cost). Sentence 3 is redundant if 6 is chosen. Sentence 4 is redundant to 1 and 2. Sentence 5 is redundant. Sentence 7 is useful context but less central than the belt itself. Sentences 8-10 are supportive quotes. Sentence 11 is redundant location/date. Sentence 12 is minor. Therefore, the highest importance scores (5) go to 1, 2, and 6."
+}

@@ -1,0 +1,7 @@
+{
+  "variant": "scoring_based_trace__one_shot__uncapped",
+  "mean_latency_s": 0.04582506448030472,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

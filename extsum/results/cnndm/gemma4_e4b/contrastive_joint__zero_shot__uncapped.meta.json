@@ -1,0 +1,7 @@
+{
+  "variant": "contrastive_joint__zero_shot__uncapped",
+  "mean_latency_s": 0.0743368976196507,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

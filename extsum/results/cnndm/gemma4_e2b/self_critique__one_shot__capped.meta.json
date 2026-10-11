@@ -1,0 +1,7 @@
+{
+  "variant": "self_critique__one_shot__capped",
+  "mean_latency_s": 0.05321505727013573,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

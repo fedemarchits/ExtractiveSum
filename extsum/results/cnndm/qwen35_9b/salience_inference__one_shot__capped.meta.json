@@ -1,0 +1,7 @@
+{
+  "variant": "salience_inference__one_shot__capped",
+  "mean_latency_s": 0.13402784240955953,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

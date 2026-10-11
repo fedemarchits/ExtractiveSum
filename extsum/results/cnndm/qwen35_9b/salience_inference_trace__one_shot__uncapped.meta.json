@@ -1,0 +1,7 @@
+{
+  "variant": "salience_inference_trace__one_shot__uncapped",
+  "mean_latency_s": 0.18981088862987236,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

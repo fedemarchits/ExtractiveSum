@@ -1,0 +1,54 @@
+# Whole-document extractive summarization on BillSum, silver labels,
+# bill-specific prompt wording.
+
+name: billsum
+task: document
+prompt_set: bill
+grid: document_full
+
+dataset:
+  name: billsum
+  # Silver files are built by `extsum silver --experiment billsum` from the
+  # splits below: a reproducible random sample, identical for every model.
+  eval_split: test
+  exemplar_split: train
+  max_docs: 100
+  sample_seed: 42
+  eval_silver: data/silver/billsum_silver.parquet
+  # BillSum has no validation split; a train subset is the exemplar pool.
+  exemplar_silver: data/silver/billsum_train_silver.parquet
+
+cap:
+  # K derived from the BillSum compression ratio (extsum compute-k).
+  heuristic: configs/heuristics/billsum.json
+
+fewshot:
+  seed: 42
+
+rationale:
+  # One-shot reasoning traces for the 4 reasoning techniques (chain_of_thought,
+  # self_ask, scoring_based, salience_inference). One strong reference model
+  # writes them once; every grid model then sees the same exemplar + trace.
+  source_model: qwen35_397b
+  max_exemplar_tries: 10
+  max_new_tokens: 1024
+  accept_f1: 0.7      # accept an exemplar once shown-vs-reference F1 >= this
+  min_f1: 0.4         # else keep the best seen if it clears this floor
+
+inference:
+  max_new_tokens: 512
+  temperature: 0.0    # deterministic for all but self_consistency
+  seed: 42
+
+self_consistency:     # orthogonal wrapper, off by default
+  enabled: false
+  n_samples: 5
+  temperature: 0.7
+
+dynamic_capper:       # orthogonal wrapper, off by default
+  enabled: false
+
+output:
+  results_dir: results   # results/<experiment>/<model>/<variant>.jsonl
+  resume: true
+

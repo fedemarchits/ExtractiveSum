@@ -1,0 +1,43 @@
+# PARTIAL RUN: the 5 best CNN/DailyMail techniques by mean F1 over the six local
+# models (reports/cnndm/summary.csv, K = 3, _trace collapsed to its base
+# technique), for the two endpoint-only large models (qwen35_27b, gemma4_31b).
+# Same procedure as billsum_large.yaml. 11 variants.
+#
+#   1. tool_no_roleplay    0.375
+#   2. tool_augmented      0.370
+#   3. tool_no_meta        0.357
+#   4. vanilla             0.349
+#   5. salience_inference  0.349
+#
+# Cells match document_full.yaml, so every variant has a local-model counterpart.
+#
+# NOTE: the grid resolver defaults ABSENT techniques to "all", so dropped
+# techniques must be explicitly zeroed ([]) here, not just omitted.
+
+techniques:
+  # --- ACTIVE: 5 best by mean F1 on CNN/DailyMail ---
+  tool_no_roleplay:
+    - {shot: zero_shot, cap: capped}
+  tool_augmented:
+    - {shot: zero_shot, cap: capped}
+  tool_no_meta:
+    - {shot: zero_shot, cap: capped}
+  vanilla: all
+  salience_inference: all
+
+  # --- DISABLED for the partial run ---
+  least_to_most: []
+  explanation_based: []
+  negative_aware: []
+  simulated_tool_augmented: []
+  self_ask: []
+  chain_of_thought: []
+  self_critique: []
+  contrastive_joint: []
+  scoring_based: []
+  scoring_no_length: []
+  scoring_no_redundancy: []
+  chain_of_thought_trace: []
+  self_ask_trace: []
+  scoring_based_trace: []
+  salience_inference_trace: []

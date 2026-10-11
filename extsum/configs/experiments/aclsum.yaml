@@ -1,0 +1,49 @@
+# Aspect-based extractive summarization on ACLSum (human gold labels).
+
+name: aclsum
+task: aspect
+prompt_set: aspect
+grid: aspect_full
+
+dataset:
+  name: aclsum
+  aspects: [challenge, approach, outcome]
+  eval_split: test
+  exemplar_split: validation   # exemplars never come from evaluated documents
+
+cap:
+  # K per aspect = median number of gold sentences on the split below.
+  strategy: median_gold_per_aspect
+  split: validation
+
+fewshot:
+  seed: 42
+
+rationale:
+  # One-shot reasoning traces for the 4 reasoning techniques (chain_of_thought,
+  # self_ask, scoring_based, salience_inference). One strong reference model
+  # writes them once; every grid model then sees the same exemplar + trace.
+  source_model: qwen35_397b
+  exemplar_split: train     # pool the trace exemplars are drawn from
+  max_exemplar_tries: 10
+  max_new_tokens: 1024
+  accept_f1: 0.7      # accept an exemplar once shown-vs-reference F1 >= this
+  min_f1: 0.4         # else keep the best seen if it clears this floor
+
+inference:
+  max_new_tokens: 512
+  temperature: 0.0    # deterministic for all but self_consistency
+  seed: 42
+
+self_consistency:     # orthogonal wrapper, off by default
+  enabled: false
+  n_samples: 5
+  temperature: 0.7
+
+dynamic_capper:       # orthogonal wrapper, off by default
+  enabled: false
+
+output:
+  results_dir: results   # results/<experiment>/<model>/<variant>.jsonl
+  resume: true
+

@@ -1,0 +1,7 @@
+{
+  "variant": "tool_no_roleplay__zero_shot__capped",
+  "mean_latency_s": 2.2061341929099942,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

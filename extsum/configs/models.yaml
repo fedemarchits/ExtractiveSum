@@ -1,0 +1,94 @@
+# Model grid: two families x four matched size tiers, listed once.
+#
+# WHERE a local model runs is decided by a profile, chosen with
+#   extsum run ... --profile vast        (or EXTSUM_PROFILE=vast)
+# The profile supplies backend + settings for every local model; a model can
+# override them per profile under `profiles:`. Models that pin `backend`
+# themselves (the endpoint-only large tier) ignore the profile.
+#
+# HF ids verified on the Hub 2026-07 (Qwen3.5 instruct = no suffix; Gemma 4 = -it).
+
+default_profile: vast
+tiers: [small, small_medium, medium, large]
+
+profiles:
+  # Rented GPU (vast.ai, A100 40GB or larger). Recent driver -> modern vLLM,
+  # which supports gemma-4 / qwen-3.5. Everything at full bf16, so quality is
+  # comparable across the whole size grid.
+  vast:
+    backend: vllm
+    tensor_parallel_size: 1
+    # News prompts are ~2-4k tokens, but BillSum one-shot prompts reach ~8k
+    # (long bill + a bill exemplar) plus 512 output tokens. 16384 still bounds
+    # the KV cache comfortably on a 40GB card.
+    max_model_len: 16384
+    gpu_memory_utilization: 0.90
+
+  # Department cluster (RTX 3090, CUDA 12.4): its vLLM predates gemma-4 /
+  # qwen-3.5, so local models run on Hugging Face Transformers.
+  cluster:
+    backend: hf
+
+models:
+  # --- Qwen3.5 ---
+  - alias: qwen35_2b
+    hf_id: Qwen/Qwen3.5-2B
+    family: qwen35
+    tier: small
+
+  - alias: qwen35_4b
+    hf_id: Qwen/Qwen3.5-4B
+    family: qwen35
+    tier: small_medium
+
+  - alias: qwen35_9b
+    hf_id: Qwen/Qwen3.5-9B
+    family: qwen35
+    tier: medium
+
+  - alias: qwen35_27b
+    hf_id: Qwen/Qwen3.5-27B
+    family: qwen35
+    tier: large
+    backend: endpoint
+    endpoint_model: qwen/qwen3.5-27b       # OpenRouter slug, verified 2026-10
+
+  # --- Gemma 4 ---
+  - alias: gemma4_e2b
+    hf_id: google/gemma-4-E2B-it
+    family: gemma4
+    tier: small
+
+  - alias: gemma4_e4b
+    hf_id: google/gemma-4-E4B-it
+    family: gemma4
+    tier: small_medium
+
+  - alias: gemma4_12b
+    hf_id: google/gemma-4-12B-it
+    family: gemma4
+    tier: medium                           # bf16 needs a >=40GB card
+    profiles:
+      cluster:
+        # 4-bit on ONE 24GB 3090. Quantized -> not precision-comparable to the
+        # bf16 models; report it separately, labelled "(4-bit)".
+        backend: vllm
+        quantization: bitsandbytes
+        tensor_parallel_size: 1
+        max_model_len: 4096
+        gpu_memory_utilization: 0.90
+
+  - alias: gemma4_31b
+    hf_id: google/gemma-4-31B-it
+    family: gemma4
+    tier: large
+    backend: endpoint
+    endpoint_model: google/gemma-4-31b-it  # OpenRouter slug, verified 2026-10
+
+  # --- Reference model (rationale traces only; not part of the scaling grid) ---
+  - alias: qwen35_397b
+    hf_id: Qwen/Qwen3.5-397B-A17B
+    family: qwen35
+    tier: reference
+    backend: endpoint
+    endpoint_model: qwen/qwen3.5-397b-a17b # OpenRouter slug, verified 2026-07

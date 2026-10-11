@@ -1,0 +1,68 @@
+# Full whole-document grid: 52 variants.
+# "all" = the technique's 4-cell grid (zero/one-shot x capped/uncapped).
+# Ablations run in the single cell where they are meaningful.
+
+techniques:
+  vanilla: all
+  least_to_most: all
+  simulated_tool_augmented: all
+  self_ask: all
+  chain_of_thought: all
+  explanation_based: all
+  salience_inference: all
+  self_critique: all
+  contrastive_joint: all
+
+  tool_augmented:
+    - shot: zero_shot
+      cap: capped
+
+  tool_no_meta:
+    - shot: zero_shot
+      cap: capped
+
+  tool_no_roleplay:
+    - shot: zero_shot
+      cap: capped
+
+  scoring_based:
+    - shot: zero_shot
+      cap: uncapped
+
+  scoring_no_length:
+    - shot: zero_shot
+      cap: uncapped
+
+  scoring_no_redundancy:
+    - shot: zero_shot
+      cap: uncapped
+
+  negative_aware:
+    - shot: one_shot
+      cap: uncapped
+    - shot: one_shot
+      cap: capped
+
+  chain_of_thought_trace:
+    - shot: one_shot
+      cap: uncapped
+    - shot: one_shot
+      cap: capped
+
+  self_ask_trace:
+    - shot: one_shot
+      cap: uncapped
+    - shot: one_shot
+      cap: capped
+
+  scoring_based_trace:
+    - shot: one_shot
+      cap: uncapped
+    - shot: one_shot
+      cap: capped
+
+  salience_inference_trace:
+    - shot: one_shot
+      cap: uncapped
+    - shot: one_shot
+      cap: capped

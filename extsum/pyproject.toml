@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "extsum"
+version = "1.0.0"
+description = "Extractive summarization with LLM prompting: aspect-based (ACLSum) and whole-document (CNN/DailyMail, XSum, BillSum)."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pyyaml",
+    "numpy",
+    "pandas",
+    "pyarrow",          # silver label files
+    "datasets",
+    "rouge-score",
+    "nltk>=3.9",        # sentence segmentation (punkt)
+    "scikit-learn",     # TF-IDF centrality (tool_augmented)
+    "scipy",            # significance tests
+    "matplotlib",       # position-bias figures
+]
+
+[project.optional-dependencies]
+# Where the models run. Install the one that matches the machine.
+endpoint = ["openai"]                                  # OpenRouter / any OpenAI-compatible API
+hf = ["torch", "transformers", "accelerate", "bitsandbytes"]
+vllm = ["vllm", "transformers"]                        # rented GPU: latest vLLM brings its own torch
+# Optional analyses.
+moverscore = ["moverscore"]
+heuristics = ["joblib", "seaborn", "evaluate", "absl-py", "tqdm",
+              "sentence-transformers", "pyemd", "moverscore"]
+dev = ["pytest", "pyflakes"]
+
+[project.scripts]
+extsum = "extsum.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

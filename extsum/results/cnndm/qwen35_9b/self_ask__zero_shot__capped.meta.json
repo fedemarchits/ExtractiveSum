@@ -1,0 +1,7 @@
+{
+  "variant": "self_ask__zero_shot__capped",
+  "mean_latency_s": 0.11314680496987421,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

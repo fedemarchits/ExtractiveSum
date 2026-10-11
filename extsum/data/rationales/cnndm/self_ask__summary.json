@@ -1,0 +1,31 @@
+{
+  "technique": "self_ask",
+  "aspect": "summary",
+  "source_model": "qwen35_397b",
+  "exemplar_sentences": [
+    "Boxing fans worldwide have picked an emerald green, diamond-encrusted belt to be strapped around the waist of either Floyd Mayweather or Manny Pacquiao at the conclusion of their $300million fight of the century in Las Vegas on May 2.",
+    "The WBC held a public vote to choose between an onyx belt of unusual design or their more traditional green world champion belt, with the latter winning by a margin of just six per cent.",
+    "The cost of the belt is likely to be upwards of $1m.",
+    "Fans chose this emerald belt as the one which will adorn the winner of the fight of the century on May 2 .",
+    "Floyd Mayweather or Manny Pacquiao will end up wearing the $1million emerald belt at the end of their fight - this image does not show the version that includes pictures of the two fighters .",
+    "Costing upwards of $1million, this WBC world champions belt features images of former WBC president Mauricio Sulaiman, Mayweather, Pacquiao and legendary heavyweight Muhammad Ali along the strap.",
+    "The treasured memento comes as a bonus to the winner of a fight for which Mayweather is expected to receive $180m and Pacquiao $120m.",
+    "In a statement the WBC said: 'This exquisite masterpiece is especially designed by the World Boxing Council, for a unique bout that is already gracing the pages of boxing history.",
+    "'In order to appropriately recognise the winner of this titanic and epic event on May 2, emeralds have triumphed.",
+    "'The World Boxing Council is very grateful to the multitude of fans that participated in this process, voting on our web page, to choose the historic belt Mayweather or Pacquiao will proudly possess.'",
+    "Mayweather and Pacquiao go head-to-head at the MGM Grand in their Las Vegas super-fight on May 2 .",
+    "VIDEO Mayweather and Pacquiao camps exchange verbal blows ."
+  ],
+  "shown_indices": [
+    1,
+    2,
+    3
+  ],
+  "gold_indices": [
+    1,
+    2,
+    10
+  ],
+  "f1": 0.6666666666666666,
+  "rationale": "Sentence 1 provides the core summary: fans chose an emerald belt for the Mayweather-Pacquiao fight. Sentence 2 adds essential context about the voting process and the alternative option (onyx), which is not mentioned elsewhere. Sentence 3 introduces the specific cost ($1m+), a key detail not found in Sentence 1. Sentence 4 is redundant as it repeats the outcome of Sentence 1. Sentence 5 repeats the winner/belt info and adds irrelevant image metadata. Sentence 6 repeats the cost from Sentence 3 but adds unique details about the figures on the belt; however, for a concise summary, the cost is already covered, and the specific figures are secondary to the main event. Sentence 7 adds payout figures for the fighters, which is tangential to the belt story. Sentences 8-10 are quotes elaborating on the sentiment already captured. Sentence 11 repeats the fight location/date already in Sentence 1. Sentence 12 is a headline about verbal blows, irrelevant to the belt selection. Therefore, Sentences 1, 2, and 3 form the most concise, non-redundant core."
+}

@@ -1,0 +1,7 @@
+{
+  "variant": "negative_aware__one_shot__uncapped",
+  "mean_latency_s": 0.0769696200499311,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

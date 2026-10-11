@@ -1,0 +1,7 @@
+{
+  "variant": "vanilla__zero_shot__uncapped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.05086442329920828,
+  "n_docs": 100,
+  "cap_k": 6
+}

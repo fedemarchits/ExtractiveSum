@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.pytest_cache/
+.DS_Store
+
+# credentials
+.env
+
+# raw per-document outputs are large: kept locally, summarised in reports/
+results/**/*.jsonl
+results/**/*.jsonl.partial
+results/**/*.jsonl.rescore
+
+# rebuilt deterministically by `extsum silver`
+data/silver/*.parquet
+data/cache/
+.cache/

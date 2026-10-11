@@ -1,0 +1,7 @@
+{
+  "variant": "self_ask_trace__one_shot__uncapped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.553417428570101,
+  "n_docs": 100,
+  "cap_k": 6
+}

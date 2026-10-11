@@ -1,0 +1,7 @@
+{
+  "variant": "salience_inference__zero_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.15926665648003108,
+  "n_docs": 100,
+  "cap_k": 6
+}

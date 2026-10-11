@@ -1,0 +1,7 @@
+{
+  "variant": "least_to_most__one_shot__capped",
+  "dataset": "billsum",
+  "mean_latency_s": 0.22826328005990945,
+  "n_docs": 100,
+  "cap_k": 6
+}

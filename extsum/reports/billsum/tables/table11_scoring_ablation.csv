@@ -1,0 +1,4 @@
+configuration,technique,precision,recall,f1,mean_length,length_delta_pct,n_docs
+Scoring-Based Framework (Full),scoring_based,0.15941789324977862,0.8933333333333333,0.2586920278685688,41.87,0.0,100
+w/o Soft Length Constraints,scoring_no_length,0.17044107942884512,0.88,0.2674874764965588,40.74,-2.698829711010259,100
+w/o Iterative Anti-Redundancy,scoring_no_redundancy,0.1555477923766745,0.9,0.25317715352211284,43.03,2.7704800573202863,100

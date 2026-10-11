@@ -1,0 +1,7 @@
+{
+  "variant": "vanilla__zero_shot__capped",
+  "mean_latency_s": 0.014672059449949301,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}

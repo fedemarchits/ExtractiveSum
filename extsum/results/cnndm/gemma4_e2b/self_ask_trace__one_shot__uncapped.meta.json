@@ -1,0 +1,7 @@
+{
+  "variant": "self_ask_trace__one_shot__uncapped",
+  "mean_latency_s": 0.05623535235994495,
+  "n_docs": 100,
+  "dataset": "cnndm",
+  "cap_k": 3
+}
