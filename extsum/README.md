@@ -143,6 +143,4 @@ The large tier needs no GPU: with `OPENAI_BASE_URL` and `OPENAI_API_KEY` in
 - **Answer parsing.** Indices given as `"13"` or `"Sentence 13"` are accepted.
   BillSum and CNN/DM results were re-scored with this parser; the stored ACLSum
   results were not (see `extsum rescore -e aclsum --dry-run`).
-- **ACLSum raw answers are incomplete.** `gemma4_e2b`, `qwen35_2b` and
-  `qwen35_4b` have summary rows only; `extsum report` carries them over.
 
