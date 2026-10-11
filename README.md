@@ -18,7 +18,7 @@ The work has three parts:
 | Part | Question | Dataset | Reference labels |
 | --- | --- | --- | --- |
 | **A** | Can LLMs pick the sentences for one *aspect* of a paper? | ACLSum (scientific papers; challenge / approach / outcome) | human |
-| **B** | Which heuristic best turns a written summary into sentence labels? | ACLSum | human, used to judge the heuristics |
+| **B** | Which heuristic best turns an abstractive summary into extractive summary? | ACLSum | human, used to judge the heuristics |
 | **C** | Does Part A carry over to whole documents, in other domains? | CNN/DailyMail (news), BillSum (US bills) | "silver": produced by Part B's heuristic |
 
 All code is in [`extsum/`](extsum/README.md). Every number below comes from
