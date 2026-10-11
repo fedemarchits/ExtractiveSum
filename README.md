@@ -254,21 +254,6 @@ The best variant for every model is a TF-IDF tool prompt, zero-shot, capped.
 
 ---
 
-## What to keep in mind when reading these numbers
-
-| Issue | Effect |
-| --- | --- |
-| **Silver labels are not gold.** Part C scores agreement with a heuristic's picks. | F1 on CNN/DailyMail and BillSum is lower than on ACLSum by construction and is not comparable across datasets. |
-| **100 documents per dataset.** | Differences under about 0.04 F1 are inside the bootstrap intervals unless a paired test says otherwise. |
-| **K differs by dataset** (3 on CNN/DailyMail, 6 on BillSum), each from the dataset's own compression ratio. | F1 levels are not comparable between the two. With K = 3 one sentence is a third of the score, so CNN/DailyMail F1 is coarse. |
-| **Answer parsing.** Gemma4-E2B often writes indices as `"13"` or `"Sentence 13"`, which the first parser dropped. | Fixed and re-scored for BillSum and CNN/DailyMail. **Not applied to ACLSum**: Gemma4-E4B would rise from 0.598 to 0.615 there, and Gemma4-E2B cannot be re-scored because its raw answers were not kept. |
-| **Gemma4-E2B still fails on 13% of BillSum answers** by copying sentence text instead of numbers. | Counted as empty selections. |
-| **Endpoint runs are not exactly repeatable.** Two identical OpenRouter runs agreed on 14 of 24 selections. | The large-tier numbers (27B, 31B) carry some run-to-run noise; local runs are deterministic. |
-| **Technique subsets differ.** The large tier ran 5 techniques, chosen per dataset. | Compare a large model only with the like-for-like columns, never with an all-variant mean. |
-| **ACLSum raw answers are incomplete** for Qwen3.5-2B, Qwen3.5-4B and Gemma4-E2B (summary rows only). | Their Part A numbers cannot be re-derived or re-scored. |
-
----
-
 ## Repository
 
 ```
