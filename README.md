@@ -32,7 +32,7 @@ All code is in [`extsum/`](extsum/README.md). Every number below comes from
 - [Positional bias — in the labels, in the models, across datasets](docs/analysis_positional_bias.md)
 - [The prompting techniques — what each one asks the model to do](docs/techniques.md)
 
-The raw tables are in [`summary_result.md`](summary_result.md).
+A one-page summary of the numbers is in [`summary_result.md`](summary_result.md).
 
 ---
 
@@ -259,7 +259,7 @@ The best variant for every model is a TF-IDF tool prompt, zero-shot, capped.
 ```
 README.md             this file
 docs/                 the analysis, one document per part
-summary_result.md     every table, all three parts
+summary_result.md     the main numbers on one page
 extsum/               the code, configs, cached traces, reports and figures
   README.md           how it is organised and how to run it
   reports/            summary.csv, tables/ and figures/ per experiment
